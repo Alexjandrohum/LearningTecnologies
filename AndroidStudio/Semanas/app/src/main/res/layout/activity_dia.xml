@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Dia">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include
+            android:id="@+id/toolbar1"
+            layout="@layout/toolbarr"
+            >
+        </include>
+
+        <FrameLayout
+            android:id="@+id/fragment_cantainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar1"
+            >
+
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+<com.getbase.floatingactionbutton.FloatingActionsMenu
+    android:id="@+id/grupo_fab"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|end"
+    android:layout_margin="@dimen/fab_margin"
+    app:fab_labelStyle="@style/etiqueta"
+    app:fab_addButtonColorNormal="@color/colorPrimary"
+    app:fab_addButtonColorPressed="@color/colorPrimaryDark">
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab1"
+        app:fab_icon="@drawable/user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fab_size="normal"
+        app:fab_colorPressed="#03A9F4"
+        app:fab_colorNormal="#0288D1"
+        app:fab_title="Perfil"/>
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab2"
+        app:fab_icon="@drawable/calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fab_size="normal"
+        app:fab_colorPressed="#8BC34A"
+        app:fab_colorNormal="#388E3C"
+        app:fab_title="Horario"/>
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab3"
+        app:fab_icon="@drawable/hoy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fab_size="normal"
+        app:fab_colorNormal="#FF9800"
+        app:fab_colorPressed="#FCF828"
+        app:fab_title="Hoy"/>
+
+</com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
+
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+
+
+
+
+</RelativeLayout>

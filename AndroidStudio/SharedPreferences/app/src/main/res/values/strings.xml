@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SharedPreferences</string>
+    <string name="name">Ingresa tu nombre</string>
+    <string name="dato">Ingresa tus datos</string>
+    <string name="button_guardar">Guardar</string>
+    <string name="button_buscar">Buscar</string>
+</resources>

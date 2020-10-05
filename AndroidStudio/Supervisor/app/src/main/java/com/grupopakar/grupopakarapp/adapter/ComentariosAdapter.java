@@ -1,0 +1,264 @@
+package com.grupopakar.grupopakarapp.adapter;
+
+import android.content.Context;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.material.textfield.TextInputEditText;
+import com.grupopakar.grupopakarapp.R;
+import com.grupopakar.grupopakarapp.activity.Comentarios;
+import com.grupopakar.grupopakarapp.dto.ComentarioDTO;
+import com.grupopakar.grupopakarapp.util.GlideApp;
+import com.grupopakar.grupopakarapp.util.Mensaje;
+
+import java.util.List;
+
+/**
+ * Created by antonio.ruiz on 2019-05-13
+ */
+public class ComentariosAdapter extends RecyclerView.Adapter {
+    private List<ComentarioDTO> elementos;
+    private final Context context;
+
+    public ComentariosAdapter(Context context, List<ComentarioDTO> elementos) {
+        this.elementos = elementos;
+        this.context = context;
+    }
+
+    @NonNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new Holder(LayoutInflater.from(parent.getContext()).inflate(R.layout.elemento_comentario, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        ((Holder) holder).bind(elementos.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return elementos.size();
+    }
+
+    public void setItems(List<ComentarioDTO> elementos) {
+        this.elementos = elementos;
+        notifyDataSetChanged();
+    }
+
+    public class Holder extends RecyclerView.ViewHolder implements TextView.OnEditorActionListener, View.OnClickListener {
+        private final CardView cv;
+        private final TextView tvNombre;
+        private final TextView tvFecha;
+        private final TextView tvCuerpo;
+        private final Button btnResponder;
+        private final TextInputEditText etValor;
+        private final RecyclerView rv;
+        private ComentariosHijoAdapter adapter;
+        private ImageView imageView;
+
+        Holder(@NonNull View itemView) {
+            super(itemView);
+            cv = itemView.findViewById(R.id.cv);
+            tvNombre = itemView.findViewById(R.id.tvNombre);
+            tvFecha = itemView.findViewById(R.id.tvFecha);
+            tvCuerpo = itemView.findViewById(R.id.tvCuerpo);
+            btnResponder = itemView.findViewById(R.id.btnResponder);
+            etValor = itemView.findViewById(R.id.etValor);
+            rv = itemView.findViewById(R.id.rv);
+            imageView = itemView.findViewById(R.id.ivPicPhoto);
+        }
+
+        void bind(ComentarioDTO elemento) {
+            /*
+            String txCuerpo = "";
+            String urlImage = "";
+            String dato = elemento.getComentario();
+            if (dato.contains("#")){
+                imageView.setVisibility(View.VISIBLE);
+                String[] parts = dato.split("#");
+                txCuerpo = parts[0];
+                urlImage = parts[1];
+
+                GlideApp.with(context)
+                        .load(urlImage)
+                        .fitCenter()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .priority(Priority.NORMAL)
+                        .into(imageView);
+            }else{
+                txCuerpo = dato;
+                imageView.setVisibility(View.INVISIBLE);
+            }
+
+
+
+             */
+
+
+
+            tvNombre.setText(elemento.getNombreUsuario());
+            tvFecha.setText(elemento.getFecha());
+            tvCuerpo.setText(elemento.getComentario());
+
+            btnResponder.setOnClickListener(this);
+            btnResponder.setVisibility(View.VISIBLE);
+            etValor.setOnEditorActionListener(this);
+            etValor.setVisibility(View.GONE);
+            rv.setVisibility(View.GONE);
+
+            if (!elemento.getRespuestas().isEmpty()) {
+                adapter = new ComentariosHijoAdapter(elemento.getRespuestas(), elemento.getIdComentario());
+                rv.setAdapter(adapter);
+                btnResponder.setVisibility(View.GONE);
+                rv.setVisibility(View.VISIBLE);
+            }
+        }
+
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                ComentarioDTO elemento = elementos.get(getAdapterPosition());
+                if (!TextUtils.isEmpty(v.getText())) {
+                    btnResponder.setVisibility(View.VISIBLE);
+                    etValor.setVisibility(View.GONE);
+                    etValor.clearFocus();
+                    ((Comentarios) context).registraComentario(elemento.getIdComentario(), v.getText().toString());
+                    v.setText(null);
+                } else {
+                    Mensaje.muestraMensajeCorto(context, context.getString(R.string.error_campo_vacio));
+                }
+                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.btnResponder) {
+                btnResponder.setVisibility(View.GONE);
+                etValor.setVisibility(View.VISIBLE);
+                etValor.requestFocus();
+                if (etValor.isFocused()) {
+                    InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (imm != null) {
+                        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                    }
+                }
+            }
+        }
+    }
+
+    private class ComentariosHijoAdapter extends RecyclerView.Adapter {
+        private final List<ComentarioDTO> elementos;
+        private final int idComentarioPadre;
+
+        ComentariosHijoAdapter(List<ComentarioDTO> elementos, int idComentarioPadre) {
+            this.elementos = elementos;
+            this.idComentarioPadre = idComentarioPadre;
+        }
+
+        @NonNull
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new ElementoHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.elemento_comentario_hijo, parent, false));
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+            ((ElementoHolder) holder).bind(elementos.get(position));
+        }
+
+        @Override
+        public int getItemCount() {
+            return elementos.size();
+        }
+
+        private class ElementoHolder extends RecyclerView.ViewHolder implements TextView.OnEditorActionListener, View.OnClickListener {
+            private final TextView tvNombre;
+            private final TextView tvFecha;
+            private final TextView tvCuerpo;
+            private final Button btnResponder;
+            private final TextInputEditText etValor;
+
+            ElementoHolder(@NonNull View itemView) {
+                super(itemView);
+                tvNombre = itemView.findViewById(R.id.tvNombre);
+                tvFecha = itemView.findViewById(R.id.tvFecha);
+                tvCuerpo = itemView.findViewById(R.id.tvCuerpo);
+                btnResponder = itemView.findViewById(R.id.btnResponder);
+                etValor = itemView.findViewById(R.id.etValor);
+            }
+
+            void bind(ComentarioDTO elemento) {
+                tvNombre.setText(elemento.getNombreUsuario());
+                tvFecha.setText(elemento.getFecha());
+                tvCuerpo.setText(elemento.getComentario());
+
+                btnResponder.setOnClickListener(this);
+                btnResponder.setVisibility(View.GONE);
+                etValor.setOnEditorActionListener(this);
+                etValor.setVisibility(View.GONE);
+                if (elementos.indexOf(elemento) == elementos.size() - 1) {
+                    btnResponder.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (!TextUtils.isEmpty(v.getText())) {
+                        btnResponder.setVisibility(View.VISIBLE);
+                        etValor.setVisibility(View.GONE);
+                        etValor.clearFocus();
+                        ((Comentarios) context).registraComentario(idComentarioPadre, v.getText().toString());
+                        v.setText(null);
+                    } else {
+                        Mensaje.muestraMensajeCorto(context, context.getString(R.string.error_campo_vacio));
+                    }
+                    InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (imm != null) {
+                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    }
+                    return true;
+                }
+                return false;
+            }
+
+            @Override
+            public void onClick(View v) {
+                if (v.getId() == R.id.btnResponder) {
+                    btnResponder.setVisibility(View.GONE);
+                    etValor.setVisibility(View.VISIBLE);
+                    etValor.requestFocus();
+                    if (etValor.isFocused()) {
+                        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        if (imm != null) {
+                            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

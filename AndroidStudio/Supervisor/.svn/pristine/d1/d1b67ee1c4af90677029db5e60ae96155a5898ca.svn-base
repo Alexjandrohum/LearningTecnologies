@@ -1,0 +1,51 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:targetApi="25">
+    <!--<shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_folder"
+        android:shortcutId="shorcutCatalogos"
+        android:shortcutLongLabel="@string/shorcut_catalogos_long"
+        android:shortcutShortLabel="@string/shorcut_catalogos_short">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.scpakar.shoescollectionapp.com.grupopakar.grupopakarapp.activity.Inicio"
+            android:targetPackage="com.scpakar.shoescollectionapp">
+            <extra
+                android:name="fragment"
+                android:value="0" />
+        </intent>
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_bag_grey"
+        android:shortcutId="shorcutBolsa"
+        android:shortcutLongLabel="@string/shorcut_bolsa_long"
+        android:shortcutShortLabel="@string/shorcut_bolsa_short">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.scpakar.shoescollectionapp.com.grupopakar.grupopakarapp.activity.Inicio"
+            android:targetPackage="com.scpakar.shoescollectionapp">
+            <extra
+                android:name="fragment"
+                android:value="1" />
+        </intent>
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_paper"
+        android:shortcutId="shorcutPedidos"
+        android:shortcutLongLabel="@string/shorcut_estatus_long"
+        android:shortcutShortLabel="@string/shorcut_estatus_short">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.scpakar.shoescollectionapp.com.grupopakar.grupopakarapp.activity.Inicio"
+            android:targetPackage="com.scpakar.shoescollectionapp">
+            <extra
+                android:name="fragment"
+                android:value="2" />
+        </intent>
+    </shortcut>-->
+</shortcuts>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">LifeCicleApplication</string>
+    <string name="input_number">Numero</string>
+</resources>

@@ -1,0 +1,74 @@
+package com.grupopakar.grupopakarapp.presenter;
+
+import com.grupopakar.grupopakarapp.contract.ComentariosContract;
+import com.grupopakar.grupopakarapp.dto.ComentarioDTO;
+import com.grupopakar.grupopakarapp.dto.MensajeDTO;
+
+import java.util.List;
+
+/**
+ * Created by antonio.ruiz on 2019-05-13
+ */
+public class ComentariosPresenterImpl implements ComentariosContract.ComentariosPresenter, ComentariosContract.ComentariosDAO.OnFinishedListener {
+    private ComentariosContract.ComentariosView view;
+    private ComentariosContract.ComentariosDAO dao;
+
+    public ComentariosPresenterImpl(ComentariosContract.ComentariosView view, ComentariosContract.ComentariosDAO dao) {
+        this.view = view;
+        this.dao = dao;
+    }
+
+    @Override
+    public void onDestroy() {
+        view = null;
+    }
+
+    @Override
+    public void cargaDatos(String token, int idTienda) {
+        if (view != null) {
+            view.updateProgress(false);
+            dao.cargaDatos(token, idTienda, this);
+        }
+    }
+
+    @Override
+    public void registraComentario(String token, ComentarioDTO comentario) {
+        if (view != null) {
+            view.updateProgress(false);
+            dao.registraComentario(token, comentario, this);
+        }
+    }
+
+    @Override
+    public void onFinished(List<ComentarioDTO> datos) {
+        if (view != null) {
+            view.updateProgress(true);
+            view.muestraDatos(datos);
+        }
+    }
+
+    @Override
+    public void onFinished(MensajeDTO mensaje) {
+        if (view != null) {
+            view.updateProgress(true);
+            view.muestraError(mensaje);
+            view.cargaDatos();
+        }
+    }
+
+    @Override
+    public void onFailureToken(MensajeDTO mensaje) {
+        if (view != null) {
+            view.updateProgress(true);
+            view.errorToken(mensaje);
+        }
+    }
+
+    @Override
+    public void onFailure(MensajeDTO mensaje) {
+        if (view != null) {
+            view.updateProgress(true);
+            view.muestraError(mensaje);
+        }
+    }
+}

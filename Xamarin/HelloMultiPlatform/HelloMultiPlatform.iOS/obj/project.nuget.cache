@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "0Elu6HaJQIVkN1UwA5R8W6Yln3+2y32YV97wp9SKlDLQ8aQvv3JRwemZO25aQVxhSbq43kDgj+V0YeNx1X/LUQ==",
+  "success": true,
+  "projectFilePath": "/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform.iOS/HelloMultiPlatform.iOS.csproj",
+  "expectedPackageFiles": [
+    "/Users/alexjandrohum/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
+    "/Users/alexjandrohum/.nuget/packages/xamarin.essentials/1.2.0/xamarin.essentials.1.2.0.nupkg.sha512",
+    "/Users/alexjandrohum/.nuget/packages/xamarin.forms/4.2.0.709249/xamarin.forms.4.2.0.709249.nupkg.sha512"
+  ],
+  "logs": []
+}

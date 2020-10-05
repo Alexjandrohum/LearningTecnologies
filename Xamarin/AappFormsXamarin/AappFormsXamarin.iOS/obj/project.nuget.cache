@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "u4ta86LBEBncNpRUg7IPX0KNYz6mVH7fCSxAswPa3dvOd2HsuPsgkDEqi+xv5+KB1FSN85AX3pCnRPtRgIEKVQ==",
+  "success": true,
+  "projectFilePath": "/Users/alexjandrohum/Documents/Xamarin/AappFormsXamarin/AappFormsXamarin.iOS/AappFormsXamarin.iOS.csproj",
+  "expectedPackageFiles": [
+    "/Users/alexjandrohum/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
+    "/Users/alexjandrohum/.nuget/packages/xamarin.essentials/1.3.1/xamarin.essentials.1.3.1.nupkg.sha512",
+    "/Users/alexjandrohum/.nuget/packages/xamarin.forms/4.5.0.495/xamarin.forms.4.5.0.495.nupkg.sha512"
+  ],
+  "logs": []
+}

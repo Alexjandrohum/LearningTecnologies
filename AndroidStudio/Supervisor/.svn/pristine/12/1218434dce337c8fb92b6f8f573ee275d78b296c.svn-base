@@ -1,0 +1,206 @@
+package com.grupopakar.grupopakarapp.activity;
+
+import android.app.Activity;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.grupopakar.grupopakarapp.R;
+import com.grupopakar.grupopakarapp.adapter.MenuAdapter;
+import com.grupopakar.grupopakarapp.fragments.TiendasFragment;
+import com.grupopakar.grupopakarapp.layout.DividerItemMenu;
+import com.grupopakar.grupopakarapp.util.Constante;
+import com.grupopakar.grupopakarapp.util.EmptyCallback;
+import com.grupopakar.grupopakarapp.util.Factory;
+import com.grupopakar.grupopakarapp.util.SessionManager;
+import com.grupopakar.grupopakarapp.ws.DispositivoWS;
+
+import retrofit2.Call;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
+
+public class Inicio extends AppCompatActivity {
+
+    private DrawerLayout drawer;
+    private MenuAdapter adapterMenu;
+    private Toolbar toolbar;
+    private RecyclerView.ItemDecoration dividerMenu;
+
+    private SessionManager session;
+
+    private TiendasFragment tiendasFragment;
+    private int navItem;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_inicio);
+
+        setupComponents();
+        setupNavigationMenu();
+        setupNavigationView();
+        validaToken();
+    }
+
+    private void setupComponents() {
+        session = new SessionManager(this);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        drawer = findViewById(R.id.drawer_layout);
+    }
+
+    private void setupNavigationMenu() {
+        RecyclerView rvMenu = findViewById(R.id.rv_menu);
+        navItem = 1;
+        adapterMenu = new MenuAdapter(Constante.MENUS, this);
+        if (dividerMenu != null) rvMenu.removeItemDecoration(dividerMenu);
+        dividerMenu = new DividerItemMenu(ContextCompat.getDrawable(this, R.drawable.divider_menu));
+        rvMenu.addItemDecoration(dividerMenu);
+        rvMenu.setAdapter(adapterMenu);
+        selectNavMenu(navItem);
+        setFragment(navItem);
+    }
+
+    private void setupNavigationView() {
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,
+                drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                InputMethodManager inputMethodManager = (InputMethodManager) Inicio.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+                if (inputMethodManager != null && Inicio.this.getCurrentFocus() != null) {
+                    if (Inicio.this.getCurrentFocus().getWindowToken() != null)
+                        inputMethodManager.hideSoftInputFromWindow(Inicio.this.getCurrentFocus().getWindowToken(), 0);
+                }
+                super.onDrawerOpened(drawerView);
+            }
+        };
+        drawer.addDrawerListener(actionBarDrawerToggle);
+
+        // Icono toolbar hamburguesa
+        actionBarDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
+        else minimizaApp();
+    }
+
+    private void minimizaApp() {
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
+    }
+
+    public void eliminaNotificaciones() {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (notificationManager != null) {
+            notificationManager.cancelAll();
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawer.openDrawer(GravityCompat.START);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void setNavigationMenuItem(int menuItem) {
+        selectNavMenu(menuItem);
+        switch (menuItem) {
+            case 0:
+                setFragment(menuItem);
+                drawer.closeDrawer(GravityCompat.START);
+                return;
+            case 4:
+                session.logout();
+                finish();
+                break;
+            default:
+                setFragment(0);
+                drawer.closeDrawer(GravityCompat.START);
+                break;
+        }
+    }
+
+    private void setFragment(int position) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+
+        switch (position) {
+            case 1:
+                if (tiendasFragment == null) tiendasFragment = new TiendasFragment();
+                fragmentTransaction.replace(R.id.frameNavHeader, tiendasFragment);
+                fragmentTransaction.commitAllowingStateLoss();
+                break;
+        }
+        invalidateOptionsMenu();
+    }
+
+    private void selectNavMenu(int position) {
+        adapterMenu.setChecked(position);
+    }
+
+    public SessionManager getSessionManager() {
+        return session;
+    }
+
+    private void validaToken() {
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+            @Override
+            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                if (!task.isSuccessful()) {
+                    Log.e(TAG, "getInstanceId failed", task.getException());
+                } else {
+                    if (task.getResult() != null) {
+                        String token = task.getResult().getToken();
+                        if (!token.isEmpty()) sendRegistrationToServer(token);
+                    }
+                }
+            }
+        });
+    }
+
+    private void sendRegistrationToServer(String token) {
+        DispositivoWS ws = (DispositivoWS) Factory.getWS(DispositivoWS.class);
+
+        String idSocio = session.getToken();
+
+        Call<Void> call = ws.registraToken(idSocio, token);
+
+        call.enqueue(new EmptyCallback<Void>());
+    }
+}

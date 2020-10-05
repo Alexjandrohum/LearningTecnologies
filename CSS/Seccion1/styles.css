@@ -1,0 +1,35 @@
+h1 {
+    color: red;
+}
+
+p {
+    color: green;
+}
+
+p,
+li {
+    color: green;
+}
+
+li {
+    list-style-type: none;
+}
+
+.special {
+    color: orange;
+    font-weight: bold;
+}
+
+li.special,
+span.special {
+    color: orange;
+    font-weight: bold;
+}
+
+li em {
+    color: rebeccapurple;
+}
+
+p {
+    color: black;
+}

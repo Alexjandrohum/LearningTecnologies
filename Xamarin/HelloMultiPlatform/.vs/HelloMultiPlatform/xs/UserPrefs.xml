@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{D89E92A5-B340-46A8-ACFC-1CD1FBE1E543}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HelloMultiPlatform/MainPage.xaml">
+    <Files>
+      <File FileName="HelloMultiPlatform/MainPage.xaml.cs" Line="12" Column="26" />
+      <File FileName="HelloMultiPlatform/MainPage.xaml" Line="22" Column="16" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="HelloMultiPlatform" expanded="True">
+            <Node name="HelloMultiPlatform" expanded="True">
+              <Node name="MainPage.xaml" expanded="True" selected="True" />
+            </Node>
+            <Node name="HelloMultiPlatform.Android" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.HelloMultiPlatform.iOS Xamarin.HotReload.GenericExceptionInfoBar.HelloMultiPlatform.iOS.HideInfoBar="True" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.F2445954-EC64-4BCF-AD27-A6B9019198B1" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.HelloMultiPlatform.Android AndroidDesignerPreferredTheme="Theme.AppCompat.Light.NoActionBar" Xamarin.HotReload.GenericExceptionInfoBar.HelloMultiPlatform.Android.HideInfoBar="True" PreferredExecutionTarget="Android.Nexus_6_API_29" />
+</Properties>

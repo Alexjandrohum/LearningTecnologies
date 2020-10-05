@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Ckeckbox</string>
+    <string name="editext_number1">Dame el primer valor</string>
+    <string name="editext_number2">Dame el segundo valor</string>
+    <string name="checkbox_sumar">Sumar</string>
+    <string name="checkbox_restar">Restar</string>
+    <string name="button_realizar">Realizar</string>
+    <string name="txt_mostrar">Resultado</string>
+</resources>

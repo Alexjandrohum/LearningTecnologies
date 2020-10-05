@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp">
+    <TextView
+        android:id="@+id/idComentario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comentario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="16sp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etComentario"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="@drawable/borde_personalizado"
+        android:gravity="start|top"
+        android:hint="@string/hint_nueva_conversacion"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idComentario" />
+
+    <ImageView
+        android:id="@+id/idFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_file"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etComentario"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        />
+    <TextView
+        android:id="@+id/idMultimedia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Adjuntar multimedia"
+        app:layout_constraintStart_toEndOf="@+id/idFile"
+        app:layout_constraintTop_toTopOf="@+id/idFile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/idFile"
+        android:textSize="16sp"
+        android:layout_marginStart="5dp"/>
+
+    <include
+        android:id="@+id/contenedorArchivos"
+        layout="@layout/elemento_comentario_archivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idMultimedia"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <CheckBox
+        android:id="@+id/id_chx_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enviar petición por correo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contenedorArchivos"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/id_ic_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="5dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_email_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/id_chx_email" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/borde_personalizado"
+        android:hint="Dirección de correo"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/id_ic_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/id_ic_email"
+        app:layout_constraintTop_toTopOf="@+id/id_ic_email"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Guardar"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,170 @@
+package com.grupopakar.grupopakarapp.activity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.grupopakar.grupopakarapp.R;
+import com.grupopakar.grupopakarapp.adapter.ComentariosAdapter;
+import com.grupopakar.grupopakarapp.contract.ComentariosContract;
+import com.grupopakar.grupopakarapp.dao.ComentariosDAOImpl;
+import com.grupopakar.grupopakarapp.dto.ComentarioDTO;
+import com.grupopakar.grupopakarapp.dto.MensajeDTO;
+import com.grupopakar.grupopakarapp.dto.TiendaDTO;
+import com.grupopakar.grupopakarapp.presenter.ComentariosPresenterImpl;
+import com.grupopakar.grupopakarapp.util.Mensaje;
+import com.grupopakar.grupopakarapp.util.SessionManager;
+import com.grupopakar.grupopakarapp.util.Util;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+import static androidx.constraintlayout.widget.Constraints.TAG;
+
+public class Comentarios extends AppCompatActivity implements ComentariosContract.ComentariosView, TextView.OnEditorActionListener {
+    private SessionManager session;
+    private TiendaDTO tienda;
+    private ComentariosPresenterImpl presenter;
+
+    private ProgressBar progressBar;
+    private RecyclerView rv;
+    private ComentariosAdapter adapter;
+    private Animation posiScroll;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_comentarios);
+        setupComponentes();
+        cargaDatos();
+    }
+
+    private void setupComponentes() {
+        tienda = (TiendaDTO) Util.getParametro(this, "tienda");
+        session = new SessionManager(this);
+        presenter = new ComentariosPresenterImpl(this, new ComentariosDAOImpl());
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+        progressBar = findViewById(R.id.progressBar);
+        rv = findViewById(R.id.rv);
+        posiScroll = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.fade_down);
+        TextInputEditText etComentario = findViewById(R.id.etComentario);
+        TextView tvNombreTienda = findViewById(R.id.tvNombreTienda);
+        TextView tvCiudad = findViewById(R.id.tvCiudad);
+        TextView tvTipo = findViewById(R.id.tvTipo);
+        TextView tvSupervisor = findViewById(R.id.tvSupervisor);
+        tvNombreTienda.setText(getString(R.string.lb_info_tienda_almacen, tienda.getNombreTienda(), tienda.getCveTienda()));
+        tvCiudad.setText(tienda.getCiudad());
+        tvTipo.setText(getString(R.string.lb_info_tipo_ciudad, tienda.getTipoTienda(), tienda.getCiudad()));
+        tvSupervisor.setText(getString(R.string.lb_supervisor_tienda, tienda.getSupervisor()));
+        adapter = new ComentariosAdapter(this, new ArrayList<ComentarioDTO>());
+        rv.setAdapter(adapter);
+        etComentario.setOnEditorActionListener(this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+    }
+
+    @Override
+    public void cargaDatos() {
+        try {
+            if (Util.isConnected(this)) {
+                presenter.cargaDatos(session.getToken(), tienda.getIdTienda());
+            }
+            else Mensaje.muestraMensajeCorto(this, R.string.mensaje_no_internet);
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
+    }
+
+    public void registraComentario(int idComentario, String comentario) {
+        try {
+            if (Util.isConnected(this)) {
+                presenter.registraComentario(session.getToken(), new ComentarioDTO(idComentario, tienda.getIdTienda(), comentario));
+            } else Mensaje.muestraMensajeCorto(this, R.string.mensaje_no_internet);
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
+    }
+
+    @Override
+    public void updateProgress(boolean enabled) {
+        progressBar.setVisibility(enabled ? GONE : VISIBLE);
+        rv.setVisibility(enabled ? VISIBLE : GONE);
+    }
+
+    @Override
+    public void muestraDatos(List<ComentarioDTO> datos) {
+        adapter.setItems(datos);
+        rv.scrollToPosition(datos.size()-1);
+        rv.startAnimation(posiScroll);
+        //rv.smoothScrollToPosition(datos.size()-1);
+    }
+
+    @Override
+    public void muestraError(MensajeDTO mensaje) {
+        Mensaje.muestraMensajeCorto(this, mensaje.getEstatus());
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void errorToken(MensajeDTO mensaje) {
+        Mensaje.muestraDialogoSesion(this, mensaje.getEstatus());
+//        session.logout();
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_DONE) {
+            if (!TextUtils.isEmpty(v.getText())) {
+                registraComentario(0, v.getText().toString());
+                v.setText(null);
+            } else {
+                Mensaje.muestraMensajeCorto(this, getString(R.string.error_campo_vacio));
+            }
+            InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            }
+            return true;
+        }
+        return false;
+    }
+}

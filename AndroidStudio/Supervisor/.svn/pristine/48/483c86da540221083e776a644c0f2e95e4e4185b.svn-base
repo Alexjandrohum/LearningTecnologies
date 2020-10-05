@@ -1,0 +1,25 @@
+package com.grupopakar.grupopakarapp.ws;
+
+import com.grupopakar.grupopakarapp.dto.ComentarioDTO;
+import com.grupopakar.grupopakarapp.dto.MensajeDTO;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
+
+/**
+ * Métodos de ComentariosWS
+ * Created by antonio.ruiz on 2019-05-13
+ */
+public interface ComentariosWS {
+    @GET("comentarios")
+    Call<List<ComentarioDTO>> getComentarios(@Header("tokenDeUsuario") String token, @Query("idTienda") int idTienda);
+
+    @POST("comentarios/registra")
+    Call<MensajeDTO> registraComentario(@Header("tokenDeUsuario") String token, @Body ComentarioDTO info);
+}

@@ -1,0 +1,73 @@
+package com.grupopakar.grupopakarapp.util;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
+import com.grupopakar.grupopakarapp.R;
+import com.grupopakar.grupopakarapp.activity.Comentarios;
+import com.grupopakar.grupopakarapp.activity.Inicio;
+import com.grupopakar.grupopakarapp.activity.Plantilla;
+import com.grupopakar.grupopakarapp.activity.Tarea;
+import com.grupopakar.grupopakarapp.activity.Tienda;
+import com.grupopakar.grupopakarapp.adapter.PlantillaAdapter;
+
+public class Mensaje {
+    /**
+     * Muestra mensaje flotante con tiempo corto.
+     *
+     * @param context Contexto de la aplicación.
+     * @param resId   Recurso de mensaje o mensaje.
+     */
+    public static void muestraMensajeCorto(Context context, int resId) {
+        Toast.makeText(context, resId, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void muestraMensajeCorto(Context context, String mensaje) {
+        Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Muestra snackbar corto.
+     *
+     * @param view    Coordinator Layout activity.
+     * @param mensaje Mensaje a mostrar.
+     */
+    public static void muestraSnackbar(View view, String mensaje) {
+        Snackbar snackbar = Snackbar.make(view, mensaje, Snackbar.LENGTH_LONG);
+        snackbar.show();
+    }
+
+    /**
+     * Dialogo de sesión terminada.
+     */
+    public static void muestraDialogoSesion(final Context context, String mensaje) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(R.string.titulo_sesion_expirada);
+        builder.setMessage(mensaje);
+        builder.setPositiveButton(R.string.ok, null);
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                if (context instanceof Inicio) {
+                    ((Inicio) context).finish();
+                } else if (context instanceof Tienda) {
+                    ((Tienda) context).finish();
+                } else if (context instanceof Plantilla) {
+                    ((Plantilla) context).finish();
+                } else if (context instanceof Tarea) {
+                    ((Tarea) context).finish();
+                } else if (context instanceof Comentarios) {
+                    ((Comentarios) context).finish();
+                }
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+}

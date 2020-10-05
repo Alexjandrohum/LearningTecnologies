@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "673388450077",
+    "firebase_url": "https://fir-febea.firebaseio.com",
+    "project_id": "fir-febea",
+    "storage_bucket": "fir-febea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673388450077:android:e1bf3638ab44aef01dd1f4",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673388450077-bqpls7v6jri6to0dluvqdhuafrh291u1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firebase",
+            "certificate_hash": "14ec42eded3fdb060452a83a2f9b1633c0705ad3"
+          }
+        },
+        {
+          "client_id": "673388450077-fs0thoj39p4bm7r1j6qf86b8t8h6heif.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALerz3TBCoOGSZeROBGW0B9gBL-56g9cY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673388450077-fs0thoj39p4bm7r1j6qf86b8t8h6heif.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

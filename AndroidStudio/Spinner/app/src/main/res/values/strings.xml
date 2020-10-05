@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Spinner</string>
+    <string name="edtxt_number1">Dame el primer valor</string>
+    <string name="edtxt_number2">Dame el segundo valor</string>
+    <string name="spinner_suma">Sumar</string>
+    <string name="spinner_restar">Restar</string>
+    <string name="button_realizar">Calcular</string>
+    <string name="txt_resultado">Resultado</string>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EnviarParametros</string>
+    <string name="edtxt_dato">Ingresa un dato</string>
+    <string name="button_enviar">Enviar</string>
+    <string name="txt_mostrar">Información</string>
+    <string name="button_atras">Atras</string>
+</resources>

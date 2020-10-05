@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Partes basicas de un documento</title>
+</head>
+
+<body>
+    <!--Aqui enpieza el encabezado principal que se amntendrá en todas páginas de nuestro sitio web-->
+    <header>
+        <h1>Header</h1>
+        <!--Aunque no es obligatorio, es una práctica común incluir el apartado menú de navegación dentro del encabezado de la página-->
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Nuetsro equipo</a></li>
+                <li><a href="#">Proyectos</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+            <!-- Un formulario de búsqueda es una forma no-lineal de hacer búsquedas en un sitio web. -->
+            <form>
+                <input type="search" name="q" placeholder="buscar solicitud">
+                <input type="submit" value="¡Vamos!">
+            </form>
+        </nav>
+    </header>
+
+    <!-- Aqui empieza el contenido principal de nuestra página -->
+    <main>
+        <!--Incluimos un articulo-->
+        <article>
+            <h2>Articulo heading</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus in culpa asperiores eveniet dicta.
+                Voluptatum molestias debitis tenetur corrupti porro aliquid adipisci culpa, ullam totam nobis
+                accusantium error delectus velit.</p>
+            <h3>SubSecction</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est modi sequi amet, minima iusto id facere
+                officiis accusamus explicabo nesciunt aliquam, nemo, a quis ex cupiditate. Explicabo aspernatur ut
+                maiores.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae provident soluta hic corporis obcaecati
+                omnis, eaque sit minima aliquid sint atque dolorem dignissimos, ex quas. Modi qui unde eius ea?</p>
+            <h3>Otra subsection</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto blanditiis quidem deleniti
+                doloremque alias similique quasi ea dignissimos? Nihil sed enim dolorum consequuntur, deserunt hic illo
+                asperiores rerum incidunt impedit!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti quod magni aliquam dignissimos
+                provident, tempora recusandae cum sit ducimus est illum similique qui, deleniti id dolorem maiores
+                quidem cupiditate atque?</p>
+        </article>
+        <!--El contenido lateral también puede estar anidado en el apartado principal (main)-->
+        <aside>
+            <h2>Relacionado</h2>
+            <ul>
+                <li><a href="#">Oh, me gusta estar cerca de la costa</a></li>
+                <li><a href="#">Oh, me gusta estar cerca del mar</a></li>
+                <li><a href="#">Aunque en el norte de Inglaterra</a></li>
+                <li><a href="#">Nunca deja de llover</a></li>
+                <li><a href="#">Oh, bueno...</a></li>
+            </ul>
+        </aside>
+        <br />
+        <h2>Elementos no-semánticos</h2>
+        <br />
+        <p><b>span</b> es un elemento no semántico que se utiliza en el interior de una línea.</p>
+        <br />
+        <p>El rey volvió ebrio a su habitación sobre la una de la madrugada, y sin duda la cerveza no le ayudaba
+            cuando cruzó tambaleante la puerta <span class="editor-note">[nota del editor: en este instante de la
+                representación, deberían atenuarse las luces]</span>.
+        </p>
+        <br />
+        <h2>Imagenes</h2>
+        <br />
+        <div class="figure">
+            <img src="https://thumbs.dreamstime.com/z/handsome-young-programer-work-night-software-also-use-phone-hacker-96586723.jpg"
+                alt="Imagen de un programador móvil" width="200" height="200">
+            <p>Forma de representar un programador trabajando</p>
+        </div>
+        <br />
+        <h2>Comentar imagenes con figure y figcaption</h2>
+        <br />
+        <figure>
+            <img src="https://thumbs.dreamstime.com/z/handsome-young-programer-work-night-software-also-use-phone-hacker-96586723.jpg"
+            alt="descripción de la imagen" width="200" height="200">
+            <figcaption>Breve descripxion de la imagen bien detallada y resumida.</figcaption>
+        </figure>
+    </main>
+    <!--Aquí está la página web que utilizaremos en todas nuestra páginas web-->
+    <footer>
+        <p>Copyright 2020 by nobody. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

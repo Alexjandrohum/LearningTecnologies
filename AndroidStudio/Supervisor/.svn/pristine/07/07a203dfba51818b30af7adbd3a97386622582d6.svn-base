@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/blue_600</color>
+    <color name="colorPrimaryDark">@color/azul_oscuro_scpakar</color>
+    <color name="colorAccent">@color/verde_scpakar</color>
+
+    <!-- Material Colors -->
+    <color name="amber_600">#FFB300</color>
+    <color name="blue_200">#90caf9</color>
+    <color name="blue_600">#1E88E5</color>
+    <color name="blue_700">#1976D2</color>
+    <color name="blue_800">#1565c0</color>
+    <color name="blue_900">#0d47a1</color>
+    <color name="blue_a700">#2962FF</color>
+    <color name="brown_100">#d7ccc8</color>
+    <color name="green_600">#43a047</color>
+    <color name="light_green_200">#c5e1a5</color>
+
+    <color name="grey_50">#fafafa</color>
+    <color name="grey_100">#f5f5f5</color>
+    <color name="grey_300">#FFE0E0E0</color>
+    <color name="grey_400">#bdbdbd</color>
+    <color name="grey_500">#9E9E9E</color>
+    <color name="grey_800">#424242</color>
+
+    <color name="material_100">#C5CAE9</color>
+
+    <color name="red_400">#ef5350</color>
+    <color name="red_800">#c62828</color>
+    <color name="white_50">#fafafa</color>
+    <color name="yellow_a200">#ffff00</color>
+    <color name="yellow_a400">#ffea00</color>
+    <color name="yellow_a700">#ffd600</color>
+
+    <array name="material">
+        <item>@color/blue_600</item>
+        <item>@color/green_600</item>
+        <item>@color/red_400</item>
+        <item>@color/light_green_200</item>
+    </array>
+
+    <color name="azul_scpakar">#002395</color>
+    <color name="azul_oscuro_scpakar">#012378</color>
+    <color name="azul_estatus">#00a9e0</color>
+    <color name="gris_claro_scpakar">#f2f2f2</color>
+    <color name="gris_medio_scpakar">#9a9b9c</color>
+    <color name="gris_oscuro_scpakar">#4d4f53</color>
+    <color name="gris_oscuro_transparente">#a04d4f53</color>
+    <color name="verde_scpakar">#bed600</color>
+    <color name="verde_transparente">#a0bed600</color>
+
+    <color name="rojo_badge">#c91350</color>
+
+    <color name="pedido_ambar">#ffa100</color>
+    <color name="pedido_verde">#bed600</color>
+    <color name="pedido_azul">#00a9e0</color>
+    <color name="pedido_rojo">#c60c30</color>
+
+    <color name="facebook_azul">#3b5998</color>
+    <color name="gris_claro">#526883</color>
+    <color name="amarillo">#FFCA28</color>
+</resources>

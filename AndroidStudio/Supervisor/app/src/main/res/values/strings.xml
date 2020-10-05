@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">Grupo Pakar App</string>
+
+    <!-- Mensajes -->
+    <string name="mensaje_no_internet">Revisa tu conexión de internet e inténtalo de nuevo.</string>
+    <string name="mensaje_captura_comentario">Agrega un comentario y da enter.</string>
+    <string name="mensaje_gps_cargando">Obteniendo ubicación...</string>
+    <string name="mensaje_gps_desactivado">Por favor activa el GPS y la conexión a internet.</string>
+
+    <!-- Errores -->
+    <string name="error_campo_requerido">Este campo es requerido.</string>
+    <string name="error_inesperado">Ocurrió un error.</string>
+    <string name="error_usuario">Usuario no válido.</string>
+    <string name="error_campo_vacio">Campo vacío</string>
+    <string name="error_campo_identico">Mismo valor</string>
+
+    <!-- Acciones -->
+    <string name="accion_entrar">Entrar</string>
+    <string name="accion_agregar">Agregar</string>
+    <string name="accion_validar">Validar Plantilla</string>
+
+    <!-- Hints -->
+    <string name="hint_usuario">USUARIO:</string>
+    <string name="hint_password">CONTRASEÑA:</string>
+    <string name="hint_descripcion">Descripción</string>
+    <string name="hint_captura_comentario">CAPTURA UN COMENTARIO</string>
+    <string name="hint_nueva_conversacion">INICIE UNA NUEVA CONVERSACIÓN O COMENTARIO</string>
+    <string name="hint_responder">Responder</string>
+    <string name="hint_responder_comentario">RESPONDER AL COMENTARIO</string>
+
+    <!-- Titulos -->
+    <string name="titulo_sesion_expirada">Sesión expirada</string>
+    <string name="titulo_agregar_comentario">VALIDAR PLANTILLA</string>
+    <string name="titulo_toolbar">Tiendas <b>App</b></string>
+
+    <!-- Labels -->
+    <string name="lb_ubicacion_actual">Tu ubicación actual:</string>
+    <string name="lb_tiendas_cercanas">Tiendas Cercanas</string>
+    <string name="lb_lista_tiendas">Lista de Tiendas</string>
+    <string name="lb_tienda_actual">%1$s\n%2$s</string>
+    <string name="lb_info_tienda_almacen">%1$s %2$s</string>
+    <string name="lb_info_tipo_ciudad">%1$s-%2$s</string>
+    <string name="lb_supervisor_tienda">SUPERVISOR: %1$s</string>
+    <string name="lb_vacantes">Vacantes: %1$d</string>
+    <string name="lb_plantilla_autorizada">Plantilla autorizada: %1$d</string>
+    <string name="lb_validar_plantilla">Validar plantilla</string>
+    <string name="lb_descanso">Descansa: %1$s</string>
+
+    <!-- Menus -->
+    <string name="menu_bandeja">Bandeja de entrada</string>
+    <string name="menu_tiendas">Tiendas</string>
+    <string name="menu_cuenta">Mi Cuenta</string>
+    <string name="menu_configuracion">Configuración</string>
+    <string name="menu_salir">Salir</string>
+
+    <!-- Otros -->
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+    <string name="ok">OK</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="4dp"
+    android:paddingTop="4dp"
+    android:paddingEnd="4dp"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/tvFecha"
+        android:singleLine="false"
+        android:text="Carlos Juarez"
+        android:textColor="@color/azul_oscuro_scpakar"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentEnd="true"
+        android:text="7/dic/18"
+        android:textColor="@color/azul_oscuro_scpakar"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCuerpo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvNombre"
+        android:text="Revisar horario para modificar"
+        android:textColor="@color/azul_oscuro_scpakar"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnResponder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCuerpo"
+        android:layout_marginTop="4dp"
+        android:drawableStart="@android:drawable/ic_media_play"
+        android:text="@string/hint_responder"
+        android:textAllCaps="false"
+        android:visibility="visible" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etValor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCuerpo"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/white"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:hint="@string/hint_responder_comentario"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:padding="5dp"
+        android:textColor="@color/azul_oscuro_scpakar"
+        android:visibility="gone" />
+</RelativeLayout>

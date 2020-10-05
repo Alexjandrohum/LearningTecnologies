@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body bgcolor="black">
+    <h1 style="color: white;"> Importanto módulos en TypeScript</h1>
+
+    <script src="node_modules/systemjs/dist/system.js"></script>
+    <!--<script src="app.js"></script> -->
+    <script>
+        SystemJS.config({
+            defaultJSExtensions:true
+        });
+        SystemJS.import('app.js');
+    </script>
+</body>
+
+</html>

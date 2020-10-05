@@ -1,0 +1,14 @@
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/bin/Debug/netstandard2.0/HelloMultiPlatform.deps.json
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/bin/Debug/netstandard2.0/HelloMultiPlatform.dll
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/bin/Debug/netstandard2.0/ref/HelloMultiPlatform.dll
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/bin/Debug/netstandard2.0/HelloMultiPlatform.pdb
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/obj/Debug/netstandard2.0/HelloMultiPlatform.csprojAssemblyReference.cache
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/obj/Debug/netstandard2.0/App.xaml.g.cs
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/obj/Debug/netstandard2.0/MainPage.xaml.g.cs
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/obj/Debug/netstandard2.0/HelloMultiPlatform.AssemblyInfoInputs.cache
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/obj/Debug/netstandard2.0/HelloMultiPlatform.AssemblyInfo.cs
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/obj/Debug/netstandard2.0/XamlC.stamp
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/obj/Debug/netstandard2.0/HelloMultiPlatform.dll
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/obj/Debug/netstandard2.0/ref/HelloMultiPlatform.dll
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/obj/Debug/netstandard2.0/HelloMultiPlatform.pdb
+/Users/alexjandrohum/Documents/Xamarin/HelloMultiPlatform/HelloMultiPlatform/obj/Debug/netstandard2.0/HelloMultiPlatform.csproj.CoreCompileInputs.cache

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body oncontextmenu="return false">
+    <h2>Servidor Node JS corriendo!</h2>
+    <button onclick="evento()">Soy un botón</button>
+    <br />
+    <button ondblclick="eventoDobleClick()">DobleClick</button>
+
+    <br />
+    <input type="text" onfocus="evento()">
+    <input type="text" id="inputId">
+
+    <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint neque tempora id, veritatis est suscipit
+        provident commodi deserunt modi nam maxime voluptatem velit laborum iste enim totam corrupti pariatur saepe.
+    </p>
+
+    <br />
+
+    <form action="" onsubmit="return validar();">
+        <input type="text" id="txtNombre" name="valor1">
+        <input type="text" id="txtApellido" name="valor2">
+        <button type="submit">Postear data</button>
+    </form>
+
+
+
+
+    <!--Forma de declarar sentencias de JavaScript dentro del html -->
+    <!--   
+    <script type="text/javascript">
+        var a = 12;
+        //console.log("Valor de a: " + a);
+        //console.log("Es ya es hora de establecerlo como algo bueno");
+    </script>
+   -->
+    <!--<script src="app.js"></script>-->
+
+    <script src="eventos.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimaryDark">#1C4B62</color>
+    <color name="colorAccent">#FFC107</color>
+    <color name="color_azul">#03A9F4</color>
+    <color name="color_azul_dark">#1C4B62</color>
+    <color name="color_pantalla">#66ABEB</color>
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MiniTwitter</string>
+    <string name="correo" />
+    <string name="input_registro">Correo</string>
+    <string name="input_contrasena">Password</string>
+    <string name="textViewAccount">Si aún no tienes cuenta, registrate aquí.</string>
+    <string name="text_go_login">Iniciar sesión</string>
+    <string name="registrar">Registrarse</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_prueba">PruebaActivity</string>
+    <string name="toolbar_title_home">Inicio</string>
+</resources>
